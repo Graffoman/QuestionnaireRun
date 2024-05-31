@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace Services.Abstractions
 {
-    internal interface IQuestionnaireRunService
+    /// <summary>
+    /// Интерфейс сервиса работы с запуском опроса.
+    /// </summary>
+    public interface IQuestionnaireRunService
     {
+        
     }
 }

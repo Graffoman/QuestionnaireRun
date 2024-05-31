@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace Services.Contracts.QuestionnaireRunDto
 {
+    /// <summary>
+    /// ДТО запуска опроса
+    /// </summary>
     internal class CreateQuestionnaireRunDto
     {
+
     }
 }
