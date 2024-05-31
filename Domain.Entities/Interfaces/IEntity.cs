@@ -1,7 +1,7 @@
 ﻿namespace Domain.Entities.Interfaces
 {
-    public interface IEntity<TId>
+    public interface IEntity
     {
-        TId Id { get; set; }
+        public string Id { get; set; }
     }
 }
