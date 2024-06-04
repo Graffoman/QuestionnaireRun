@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Infrastructure.EntityFramework
+namespace Infrastructure.DataAcess
 {
-    internal class DatabaseContext
+    internal class MongoDBSettings
     {
     }
 }
