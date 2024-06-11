@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Domain.Entities.Classes;
+using Services.Contracts.UserGroupDto;
 
 namespace Services.Abstractions
 {
-    internal interface IUserGroupService
+    public interface IUserGroupService
     {
+        Task<ICollection<User>> GetAllAsync();
+        Task<User> GetByIdAsync(string id);
     }
 }

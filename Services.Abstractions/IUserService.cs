@@ -1,12 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Domain.Entities.Classes;
+using Services.Contracts.UserDto;
+
 
 namespace Services.Abstractions
 {
-    internal interface IUserService
+    public interface IUserService
     {
+        Task<ICollection<User>> GetAllAsync();
+        Task<User> GetByIdAsync(string id);
+        Task<string> CreateAsync(CreateUserDto CreateUserDto);
+        Task<string> UpdateAsync(User user);
+        Task<string> DeleteByIdAsync(string id);
+        Task<string> DeleteAsync(User user);
     }
 }

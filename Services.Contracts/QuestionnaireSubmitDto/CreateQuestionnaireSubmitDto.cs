@@ -5,7 +5,7 @@ namespace Services.Contracts.QuestionnaireSubmitDto
     /// <summary>
     /// ДТО ответа на опрос
     /// </summary>
-    internal class CreateQuestionnaireSubmitDto
+    public class CreateQuestionnaireSubmitDto
     {
         /// <summary>
         /// ДТО дентификатора.

@@ -5,7 +5,8 @@ using Services.Repositories.Abstractions;
 
 namespace Infrastructure.Repositories.Implementations
 {
-    public abstract class RepositoryMongoDB<T> : IRepositoryMongoDB<T> where T : class
+    public abstract class RepositoryMongoDB<T> : IRepositoryMongoDB<T> 
+        where T : class
     {
         protected readonly MongoDB<T> Db;
         private readonly IMongoCollection<T> Collection;

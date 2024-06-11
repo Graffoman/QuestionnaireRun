@@ -1,12 +1,40 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Domain.Entities.Classes;
+using Services.Abstractions;
+using Services.Contracts.QuestionnaireRunDto;
+
 
 namespace Services.Implementations
 {
-    internal class QuestionnaireRunService
+    public class QuestionnaireRunService : IQuestionnaireRunService
     {
+        public Task<string> CreateAsync(CreateQuestionnaireRunDto createQuestionnaireRunDto)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<string> DeleteAsync(QuestionnaireRun questionnaireRun)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<string> DeleteByIdAsync(string id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<ICollection<QuestionnaireRun>> GetAllAsync()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<QuestionnaireRun> GetByIdAsync(string id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<string> UpdateAsync(QuestionnaireRun questionnaireRun)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

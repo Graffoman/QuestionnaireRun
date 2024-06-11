@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Domain.Entities.Classes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,9 @@ using System.Threading.Tasks;
 
 namespace Services.Contracts.QuestionnaireSubmitDto
 {
-    internal class UpdateQuestionnaireSubmitDto
-    {
+    public class UpdateQuestionnaireSubmitDto
+    { 
+        public DateTime SubmitDate { get; set; }
+        public string Answers { get; set; }
     }
 }
