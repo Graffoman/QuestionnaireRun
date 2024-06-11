@@ -3,7 +3,7 @@ using Domain.Entities.Interfaces;
 
 namespace Domain.Entities.Classes
 {
-    public class QuestionnaireRun : IEntity
+    public class QuestionnaireRun : IEntityMongoDB
     {
         public string Id { get; set; }
         public string QuestionnaireId { get; set; }

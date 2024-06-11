@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Domain.Entities.Classes
 {
-    public class UserGroup : IEntity
+    public class UserGroup : IEntityMongoDB
     {
         public string Id { get; set; }
     }

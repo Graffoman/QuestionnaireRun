@@ -6,7 +6,7 @@ namespace Domain.Entities.Classes
     /// <summary>
     /// Ответы на опрос
     /// </summary>
-    public class QuestionnaireSubmit : IEntity
+    public class QuestionnaireSubmit : IEntityMongoDB
     {
         /// <summary>
         /// Идентификатор.

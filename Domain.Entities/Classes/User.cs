@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Domain.Entities.Classes
 {
-    public class User : IEntity
+    public class User : IEntityPostgresDB<string>
     {
         public string UserId { get; set; }
         public string Id {  get; set; }

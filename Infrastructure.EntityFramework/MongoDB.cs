@@ -9,7 +9,7 @@ namespace Infrastructure.DataAcess
         public MongoDB()
         {
             MongoClient client = new("mongodb://localhost:27017");
-            IMongoDatabase database = client.GetDatabase("db");
+            IMongoDatabase database = client.GetDatabase("Test");
 
             string collectionName = typeof(T).Name.ToLower() + "s";
 

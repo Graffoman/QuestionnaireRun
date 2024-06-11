@@ -3,7 +3,7 @@
     /// <summary>
     /// Интерфейс сущности с идентификатором.
     /// </summary>
-    public interface IEntity
+    public interface IEntityMongoDB
     {
         /// <summary>
         /// Идентификатор.

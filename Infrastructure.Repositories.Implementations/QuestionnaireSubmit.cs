@@ -1,12 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Domain.Entities.Classes;
+using Infrastructure.DataAcess;
+using Services.Repositories.Abstractions;
 
 namespace Infrastructure.Repositories.Implementations
 {
-    internal class QuestionnaireSubmit
+    public class QuestionnaireSubmitRepository : RepositoryMongoDB<QuestionnaireSubmit>, IQuestionnaireSubmitRepository
     {
+        public QuestionnaireSubmitRepository(MongoDB<QuestionnaireSubmit> db) : base(db)
+        {
+
+        }
     }
 }
