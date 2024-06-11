@@ -11,29 +11,10 @@ namespace Services.Contracts.UserDto
     /// </summary>
     public class CreateUserDto
     {
-        /// <summary>
-        /// Идентификатор.
-        /// </summary>
         public string Id { get; set; }
-
-        /// <summary>
-        /// Идентификатор юзера.
-        /// </summary>
         public string UserId { get; set; }
-
-        /// <summary>
-        /// почта юзера
-        /// </summary>
         public string Email { get; set; }
-
-        /// <summary>
-        /// Имя юзера.
-        /// </summary>
         public string FirstName { get; set; }
-
-        /// <summary>
-        /// Фамилия юзера.
-        /// </summary>
         public string LastName { get; set; }
 
     }

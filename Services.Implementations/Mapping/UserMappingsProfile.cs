@@ -1,12 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using AutoMapper;
+using Domain.Entities.Classes;
+using Services.Contracts.UserDto;
 
 namespace Services.Implementations.Mapping
 {
-    internal class UserMappingsProfile
+    public class UserMappingsProfile : Profile
     {
+        public UserMappingsProfile() 
+        {
+            CreateMap<CreateUserDto, User>()
+                .ForMember(x => x.Id, map => map.Ignore())
+                .ForMember(x => x.UserId, map => map.MapFrom(src => src.UserId))
+                .ForMember(x => x.Email, map => map.MapFrom(src => src.Email))
+                .ForMember(x => x.FirstName, map => map.MapFrom(src => src.FirstName))
+                .ForMember(x => x.LastName, map => map.MapFrom(src => src.LastName));
+        }
     }
 }

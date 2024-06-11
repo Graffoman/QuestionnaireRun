@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Services.Contracts.QuestionnaireRunDto
 {
-    internal class UpdateQuestionnaireRunDto
+    public class UpdateQuestionnaireRunDto
     {
         public QuestionnaireRunState State { get; set; }
         public List<DateTime>? SendDates { get; set; }
