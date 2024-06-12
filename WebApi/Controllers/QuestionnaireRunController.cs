@@ -7,6 +7,8 @@ using Services.Contracts.QuestionnaireRunDto;
 
 namespace WebApi.Controllers
 {
+    [Route("api/[controller]")]
+    [ApiController]
     public class QuestionnaireRunController : ControllerBase
     {
         private readonly IQuestionnaireRunService _service;
