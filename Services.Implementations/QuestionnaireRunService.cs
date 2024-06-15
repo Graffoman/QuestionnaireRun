@@ -1,38 +1,54 @@
-﻿using Domain.Entities.Classes;
+﻿using AutoMapper;
+using Domain.Entities.Classes;
 using Services.Abstractions;
 using Services.Contracts.QuestionnaireRunDto;
+using Services.Repositories.Abstractions;
 
 
 namespace Services.Implementations
 {
     public class QuestionnaireRunService : IQuestionnaireRunService
     {
-        public Task<string> CreateAsync(CreateQuestionnaireRunDto createQuestionnaireRunDto)
+
+        private readonly IMapper _mapper;
+        private readonly IQuestionnaireRunRepository _questionnaireRunRepository;
+
+        public QuestionnaireRunService(IMapper mapper, IQuestionnaireRunRepository questionnaireRunRepository)
         {
-            throw new NotImplementedException();
+            _mapper = mapper;
+            _questionnaireRunRepository = questionnaireRunRepository;
         }
 
-        public Task<string> DeleteAsync(QuestionnaireRun questionnaireRun)
+
+        public async Task<string> CreateAsync(CreateQuestionnaireRunDto createQuestionnaireRunDto)
         {
-            throw new NotImplementedException();
+            var questionnaireRun = _mapper.Map<CreateQuestionnaireRunDto, QuestionnaireRun>(createQuestionnaireRunDto);
+            await _questionnaireRunRepository.AddAsync(questionnaireRun, CancellationToken.None);
+            return questionnaireRun.Id;
+
         }
 
-        public Task<string> DeleteByIdAsync(string id)
+        //public async Task<string> DeleteAsync(QuestionnaireRun questionnaireRun)
+        //{
+        //    throw new NotImplementedException();
+        //}
+
+        public Task<bool> DeleteByIdAsync(string id)
         {
-            throw new NotImplementedException();
+            return _questionnaireRunRepository.DeleteAsync(id, CancellationToken.None);
         }
 
-        public Task<ICollection<QuestionnaireRun>> GetAllAsync()
+        public async Task<ICollection<QuestionnaireRun>> GetAllAsync()
         {
             throw new NotImplementedException();
         }
 
         public Task<QuestionnaireRun> GetByIdAsync(string id)
         {
-            throw new NotImplementedException();
+            return _questionnaireRunRepository.GetAsync(id, CancellationToken.None);
         }
 
-        public Task<string> UpdateAsync(QuestionnaireRun questionnaireRun)
+        public async Task<string> UpdateAsync(QuestionnaireRun questionnaireRun)
         {
             throw new NotImplementedException();
         }

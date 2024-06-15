@@ -15,7 +15,7 @@ namespace Infrastructure.DataAcess
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseNpgsql("Host=localhost;Port=5433;Database=Test;Username=postgres;Password=postgres");
+            optionsBuilder.UseNpgsql("Host=localhost;Port=5433;Database=postgres;Username=postgres;Password=admin");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

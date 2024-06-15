@@ -12,7 +12,7 @@ namespace Services.Abstractions
         Task<QuestionnaireRun> GetByIdAsync(string id);
         Task<string> CreateAsync(CreateQuestionnaireRunDto createQuestionnaireRunDto);
         Task<string> UpdateAsync(QuestionnaireRun questionnaireRun);
-        Task<string> DeleteByIdAsync(string id);
-        Task<string> DeleteAsync(QuestionnaireRun questionnaireRun);
+        Task<bool> DeleteByIdAsync(string id);
+        //Task<string> DeleteAsync(QuestionnaireRun questionnaireRun);
     }
 }

@@ -8,8 +8,8 @@ namespace Infrastructure.DataAcess
 
         public MongoDB()
         {
-            MongoClient client = new("mongodb://localhost:27017");
-            IMongoDatabase database = client.GetDatabase("Test");
+            MongoClient client = new("mongodb://admin:admin@localhost:27017/");
+            IMongoDatabase database = client.GetDatabase("OTUSMongoDB");
 
             string collectionName = typeof(T).Name.ToLower() + "s";
 
