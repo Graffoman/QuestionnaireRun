@@ -8,10 +8,10 @@ namespace Services.Abstractions
     /// </summary>
     public interface IQuestionnaireRunService
     {
-        Task<ICollection<QuestionnaireRun>> GetAllAsync();
+        Task<List<QuestionnaireRun>> GetAllAsync();
         Task<QuestionnaireRun> GetByIdAsync(string id);
         Task<string> CreateAsync(CreateQuestionnaireRunDto createQuestionnaireRunDto);
-        Task<string> UpdateAsync(QuestionnaireRun questionnaireRun);
+        Task<bool> UpdateAsync(QuestionnaireRun questionnaireRun);
         Task<bool> DeleteByIdAsync(string id);
         //Task<string> DeleteAsync(QuestionnaireRun questionnaireRun);
     }

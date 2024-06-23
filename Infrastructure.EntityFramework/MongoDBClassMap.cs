@@ -11,7 +11,7 @@ namespace Infrastructure.DataAcces
     {
         public static void RegisterClassMaps()
         {
-            BsonClassMap.RegisterClassMap<User>(cm =>
+            BsonClassMap.RegisterClassMap<QuestionnaireRun>(cm =>
             {
                 cm.AutoMap();
                 cm.MapIdMember(x => x.Id)
@@ -19,9 +19,17 @@ namespace Infrastructure.DataAcces
                     .SetSerializer(new StringSerializer(BsonType.ObjectId));
             });
 
-            BsonClassMap.RegisterClassMap<Questionnaire>();
-            BsonClassMap.RegisterClassMap<QuestionnaireRun>();
-            BsonClassMap.RegisterClassMap<QuestionnaireSubmit>();
+            BsonClassMap.RegisterClassMap<QuestionnaireSubmit>(cm =>
+            {
+                cm.AutoMap();
+                cm.MapIdMember(x => x.Id)
+                    .SetIdGenerator(new StringObjectIdGenerator())
+                    .SetSerializer(new StringSerializer(BsonType.ObjectId));
+            });
+
+            //BsonClassMap.RegisterClassMap<Questionnaire>();
+            BsonClassMap.RegisterClassMap<UserGroup>();
+            BsonClassMap.RegisterClassMap<User>();
         }
     }
 }

@@ -76,12 +76,14 @@ namespace Infrastructure.Repositories.Implementations
             return result.IsAcknowledged && result.ModifiedCount > 0;
         }
 
-        public virtual async Task<T> UpdateAsync(T entity, CancellationToken cancellationToken)
+        public virtual async Task<bool> UpdateAsync(T entity, CancellationToken cancellationToken)
         {
+            var filter = Builders<T>.Filter.Eq(e => e.Id, entity.Id);
+            var result = await Collection.ReplaceOneAsync(filter, entity);
+            return result.IsAcknowledged && result.ModifiedCount > 0;
+
             //var filter = Builders<T>.Filter.Eq(e => e.GetType().GetProperty("Id").GetValue(e), entity.GetType().GetProperty("Id").GetValue(entity));
             //await Collection.ReplaceOneAsync(filter, entity);
-
-            throw new NotImplementedException();
         }
     }
 }

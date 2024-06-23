@@ -13,7 +13,6 @@ namespace Services.Contracts.QuestionnaireRunDto
     /// </summary>
     public class CreateQuestionnaireRunDto
     {
-        public string Id { get; set; }
         public string QuestionnaireId { get; set; }
         public QuestionnaireRunState State { get; set; }
         public DateTime StartDate { get; set; }

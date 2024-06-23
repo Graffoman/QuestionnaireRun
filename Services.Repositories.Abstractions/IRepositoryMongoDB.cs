@@ -13,7 +13,7 @@ namespace Services.Repositories.Abstractions
         Task<bool> DeleteAsync(string id, CancellationToken cancellationToken);
 
         bool Update(T entity);
-        Task<T> UpdateAsync(T entity, CancellationToken cancellationToken);
+        Task<bool> UpdateAsync(T entity, CancellationToken cancellationToken);
 
         T Add(T entity);
         Task AddAsync(T entity, CancellationToken cancellationToken);

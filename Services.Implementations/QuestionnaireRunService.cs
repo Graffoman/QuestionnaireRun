@@ -28,19 +28,14 @@ namespace Services.Implementations
 
         }
 
-        //public async Task<string> DeleteAsync(QuestionnaireRun questionnaireRun)
-        //{
-        //    throw new NotImplementedException();
-        //}
-
         public Task<bool> DeleteByIdAsync(string id)
         {
             return _questionnaireRunRepository.DeleteAsync(id, CancellationToken.None);
         }
 
-        public async Task<ICollection<QuestionnaireRun>> GetAllAsync()
+        public Task<List<QuestionnaireRun>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            return _questionnaireRunRepository.GetAllAsync(CancellationToken.None);
         }
 
         public Task<QuestionnaireRun> GetByIdAsync(string id)
@@ -48,9 +43,9 @@ namespace Services.Implementations
             return _questionnaireRunRepository.GetAsync(id, CancellationToken.None);
         }
 
-        public async Task<string> UpdateAsync(QuestionnaireRun questionnaireRun)
+        public Task<bool> UpdateAsync(QuestionnaireRun questionnaireRun)
         {
-            throw new NotImplementedException();
+            return _questionnaireRunRepository.UpdateAsync(questionnaireRun, CancellationToken.None);
         }
     }
 }
