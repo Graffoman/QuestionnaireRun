@@ -26,24 +26,24 @@ namespace WebApi
         {
             MongoDBClassMap.RegisterClassMaps();
             serviceCollection
-                .AddSingleton<MongoDB<QuestionnaireRun>>();
-                //.AddSingleton<PostgresDB<User>>();
+                .AddSingleton<MongoDB<QuestionnaireRun>>()
+                .AddSingleton<MongoDB<QuestionnaireSubmit>>();
             return serviceCollection;
         }
 
         private static IServiceCollection InstallServices(this IServiceCollection serviceCollection)
         {
             serviceCollection
-                .AddTransient<IQuestionnaireRunService, QuestionnaireRunService>();
-                //.AddTransient<IUserService, UserService>();
+                .AddTransient<IQuestionnaireRunService, QuestionnaireRunService>()
+                .AddTransient<IQuestionnaireSubmitService, QuestionnaireSubmitService>();
             return serviceCollection;
         }
 
         private static IServiceCollection InstallRepositories(this IServiceCollection serviceCollection)
         {
             serviceCollection
-                .AddTransient<IQuestionnaireRunRepository, QuestionnaireRunRepository>();
-                //.AddTransient<IUserRepository, UserRepository>();
+                .AddTransient<IQuestionnaireRunRepository, QuestionnaireRunRepository>()
+                .AddTransient<IQuestionnaireSubmitRepository, QuestionnaireSubmitRepository>();
             return serviceCollection;
         }
     }

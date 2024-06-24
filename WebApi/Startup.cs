@@ -62,7 +62,9 @@ namespace WebApi
             var configuration = new MapperConfiguration(cfg =>
             {
                 cfg.AddProfile<QuestionnaireRunMappingsProfile>();
-                cfg.AddProfile<UserMappingsProfile>();
+                cfg.AddProfile<QuestionnaireSubmitMappingsProfile>();
+                //cfg.AddProfile<UserMappingsProfile>();
+                //cfg.AddProfile(new UserGroupMappingsProfile());
             });
             configuration.AssertConfigurationIsValid();
             return configuration;

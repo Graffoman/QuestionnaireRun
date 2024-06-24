@@ -1,39 +1,49 @@
-﻿using Domain.Entities.Classes;
+﻿using AutoMapper;
+using Domain.Entities.Classes;
 using Services.Abstractions;
 using Services.Contracts.QuestionnaireSubmitDto;
+using Services.Repositories.Abstractions;
 
 namespace Services.Implementations
 {
     public class QuestionnaireSubmitService : IQuestionnaireSubmitService
     {
-        public Task<string> CreateAsync(CreateQuestionnaireSubmitDto createQuestionnaireSubmitDto)
+        private readonly IMapper _mapper;
+        private readonly IQuestionnaireSubmitRepository _questionnaireSubmitRepository;
+
+        public QuestionnaireSubmitService(IMapper mapper, IQuestionnaireSubmitRepository questionnaireSubmitRepository)
         {
-            throw new NotImplementedException();
+            _mapper = mapper;
+            _questionnaireSubmitRepository = questionnaireSubmitRepository;
         }
 
-        public Task<string> DeleteAsync(QuestionnaireSubmit questionnaireSubmit)
+
+        public async Task<string> CreateAsync(CreateQuestionnaireSubmitDto createQuestionnaireSubmitDto)
         {
-            throw new NotImplementedException();
+            var QuestionnaireSubmit = _mapper.Map<CreateQuestionnaireSubmitDto, QuestionnaireSubmit>(createQuestionnaireSubmitDto);
+            await _questionnaireSubmitRepository.AddAsync(QuestionnaireSubmit, CancellationToken.None);
+            return QuestionnaireSubmit.Id;
+
         }
 
-        public Task<string> DeleteByIdAsync(string id)
+        public Task<bool> DeleteByIdAsync(string id)
         {
-            throw new NotImplementedException();
+            return _questionnaireSubmitRepository.DeleteAsync(id, CancellationToken.None);
         }
 
-        public Task<ICollection<QuestionnaireSubmit>> GetAllAsync()
+        public Task<List<QuestionnaireSubmit>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            return _questionnaireSubmitRepository.GetAllAsync(CancellationToken.None);
         }
 
         public Task<QuestionnaireSubmit> GetByIdAsync(string id)
         {
-            throw new NotImplementedException();
+            return _questionnaireSubmitRepository.GetAsync(id, CancellationToken.None);
         }
 
-        public Task<string> UpdateAsync(QuestionnaireSubmit questionnaireSubmit)
+        public Task<bool> UpdateAsync(QuestionnaireSubmit QuestionnaireSubmit)
         {
-            throw new NotImplementedException();
+            return _questionnaireSubmitRepository.UpdateAsync(QuestionnaireSubmit, CancellationToken.None);
         }
     }
 }

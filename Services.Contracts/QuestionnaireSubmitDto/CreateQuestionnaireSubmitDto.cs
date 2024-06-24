@@ -7,7 +7,6 @@ namespace Services.Contracts.QuestionnaireSubmitDto
     /// </summary>
     public class CreateQuestionnaireSubmitDto
     {
-        public string Id { get; set; }
         public User User { get; set; }
         public User Author { get; set; }
         public QuestionnaireRun QuestionnaireRun { get; set; }
