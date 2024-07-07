@@ -1,11 +1,6 @@
 ﻿using AutoMapper;
 using Domain.Entities.Classes;
 using Services.Contracts.UserGroupDto;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Services.Implementations.Mapping
 {
@@ -14,7 +9,18 @@ namespace Services.Implementations.Mapping
         public UserGroupMappingsProfile() 
         {
             CreateMap<CreateUserGroupDto, UserGroup>()
-                .ForMember(x => x.Id, map => map.Ignore());
+                .ForMember(x => x.Id, map => map.Ignore())
+                .ForMember(x => x.GroupId, map => map.Ignore())
+                .ForMember(x => x.Name, map => map.MapFrom(src => src.  Name))
+                .ForMember(x => x.UserGroups, map => map.Ignore())
+                .ForMember(d => d.Deleted, map => map.Ignore());
+
+            CreateMap<UpdateUserGroupDto, UserGroup>()
+                .ForMember(x => x.Id, map => map.Ignore())
+                .ForMember(x => x.GroupId, map => map.Ignore())
+                .ForMember(x => x.Name, map => map.MapFrom(src => src.Name))
+                .ForMember(x => x.UserGroups, map => map.Ignore())
+                .ForMember(d => d.Deleted, map => map.Ignore());
         }
     }
 }

@@ -7,6 +7,8 @@ using Services.Contracts.UserGroupDto;
 
 namespace WebApi.Controllers
 {
+    [Route("api/[controller]")]
+    [ApiController]
     public class UserGroupController : ControllerBase
     {
         private readonly IUserGroupService _service;

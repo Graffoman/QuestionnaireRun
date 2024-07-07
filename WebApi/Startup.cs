@@ -63,8 +63,8 @@ namespace WebApi
             {
                 cfg.AddProfile<QuestionnaireRunMappingsProfile>();
                 cfg.AddProfile<QuestionnaireSubmitMappingsProfile>();
-                //cfg.AddProfile<UserMappingsProfile>();
-                //cfg.AddProfile(new UserGroupMappingsProfile());
+                cfg.AddProfile<UserMappingsProfile>();
+                cfg.AddProfile(new UserGroupMappingsProfile());
             });
             configuration.AssertConfigurationIsValid();
             return configuration;

@@ -2,7 +2,6 @@
 using Domain.Entities.Classes;
 using Microsoft.AspNetCore.Mvc;
 using Services.Abstractions;
-using Services.Contracts.QuestionnaireSubmitDto;
 using Services.Contracts.UserDto;
 
 namespace WebApi.Controllers
@@ -29,12 +28,12 @@ namespace WebApi.Controllers
             return Ok(user);
         }
 
-        [HttpGet]
-        public async Task<IActionResult> GetAllAsync()
-        {
-            var user = await _service.GetAllAsync();
-            return Ok(user);
-        }
+        //[HttpGet]
+        //public async Task<IActionResult> GetAllAsync()
+        //{
+        //    var user = await _service.GetAllAsync();
+        //    return Ok(user);
+        //}
 
         [HttpPost]
         public async Task<IActionResult> CreateAsync(CreateUserDto createUserDto)
@@ -44,19 +43,22 @@ namespace WebApi.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateAsync(string id, CreateUserDto createUserDto)
+        public async Task<IActionResult> UpdateAsync(string id, UpdateUserDto updateUserDto)
         {
-            var user = _mapper.Map<CreateUserDto, User>(createUserDto);
-            user.Id = id;
+            //var user = _mapper.Map<UpdateUserDto, User>(updateUserDto);
+            //user.Id = id;
 
-            await _service.UpdateAsync(user);
+            //await _service.UpdateAsync(user);
+
+            await _service.UpdateAsync(id, _mapper.Map<UpdateUserDto, User>(updateUserDto));
+
             return Ok();
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteByIdAsync(string id)
+        public async Task<IActionResult> DeleteAsync(string id)
         {
-            await _service.DeleteByIdAsync(id);
+            await _service.DeleteAsync(id);
             return Ok();
         }
     }

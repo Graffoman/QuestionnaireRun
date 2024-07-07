@@ -27,9 +27,16 @@ namespace Infrastructure.DataAcces
                     .SetSerializer(new StringSerializer(BsonType.ObjectId));
             });
 
-            //BsonClassMap.RegisterClassMap<Questionnaire>();
-            BsonClassMap.RegisterClassMap<UserGroup>();
+            BsonClassMap.RegisterClassMap<UserGroup>(cm =>
+            {
+                cm.AutoMap();
+                cm.MapIdMember(x => x.Id)
+                    .SetIdGenerator(new StringObjectIdGenerator())
+                    .SetSerializer(new StringSerializer(BsonType.ObjectId));
+            });
+
             BsonClassMap.RegisterClassMap<User>();
+            //BsonClassMap.RegisterClassMap<Questionnaire>();
         }
     }
 }

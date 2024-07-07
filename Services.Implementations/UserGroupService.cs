@@ -1,40 +1,73 @@
-﻿using Domain.Entities.Classes;
+﻿using AutoMapper;
+using Domain.Entities.Classes;
 using Services.Abstractions;
+using Services.Contracts.Group;
+using Services.Contracts.UserDto;
 using Services.Contracts.UserGroupDto;
-
+using Services.Repositories.Abstractions;
+using System.Text.RegularExpressions;
 
 namespace Services.Implementations
 {
     public class UserGroupService : IUserGroupService
     {
-        public Task<string> CreateAsync(CreateUserGroupDto createUserGroupDto)
+        private readonly IMapper _mapper;
+        private readonly IUserGroupRepository _userGroupRepository;
+
+        public UserGroupService(IMapper mapper, IUserGroupRepository userGroupRepository)
         {
-            throw new NotImplementedException();
+            _mapper = mapper;
+            _userGroupRepository = userGroupRepository;
         }
 
-        public Task<string> DeleteAsync(UserGroup userGroup)
+
+
+        public Task<UserGroupDto> GetByIdAsync(string id)
         {
-            throw new NotImplementedException();
+            return _userGroupRepository.GetAsync(id, CancellationToken.None);
         }
 
-        public Task<string> DeleteByIdAsync(string id)
+        public async Task<string> CreateAsync(CreateUserGroupDto createUserGroupDto)
         {
-            throw new NotImplementedException();
+            var UserGroup = _mapper.Map<CreateUserGroupDto, UserGroup>(createUserGroupDto);
+
+            await _userGroupRepository.AddAsync(UserGroup);
+            
+            return UserGroup.Id;
         }
 
-        public Task<ICollection<User>> GetAllAsync()
+        public Task<bool> UpdateAsync(string id, UpdateUserGroupDto updateUserGroupDto)
         {
-            throw new NotImplementedException();
+            var UserGroup = _mapper.Map<UpdateUserGroupDto, UserGroup>(updateUserGroupDto);
+
+            return _userGroupRepository.UpdateAsync(UserGroup, CancellationToken.None);
         }
 
-        public Task<User> GetByIdAsync(string id)
+        //public Task<string> DeleteAsync(UserGroup userGroup)
+        //{
+        //    throw new NotImplementedException();
+        //}
+
+        public async Task<bool> DeleteAsync(string id)
         {
-            throw new NotImplementedException();
+            return _userGroupRepository.Delete(id);
         }
 
-        public Task<string> UpdateAsync(UserGroup userGroup)
+        public Task<List<UserGroup>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            return _userGroupRepository.GetAllAsync(CancellationToken.None);
+        }
+
+        public async Task<ICollection<UserGroupDto>> GetListAsync()
+        {
+            ICollection<UserGroup> entities = await _userGroupRepository.GetListAsync();
+            return _mapper.Map<ICollection<UserGroup>, ICollection<UserGroupDto>>(entities);
+        }
+
+        public async Task<ICollection<UserDto>> GetUserListAsync(string id)
+        {
+            ICollection<User> entities = await _userGroupRepository.GetUserListAsync(id);
+            return _mapper.Map<ICollection<User>, ICollection<UserDto>>(entities);
         }
     }
 }

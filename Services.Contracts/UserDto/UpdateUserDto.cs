@@ -1,11 +1,9 @@
-﻿namespace Services.Contracts.UserDto
+﻿using Domain.Entities.Classes;
+
+namespace Services.Contracts.UserDto
 {
-    /// <summary>
-    /// ДТО юзера
-    /// </summary>
-    public class CreateUserDto
+    public class UpdateUserDto
     {
-        public string UserId { get; set; }
         public string Email { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }

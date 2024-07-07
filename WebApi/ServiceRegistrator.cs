@@ -28,6 +28,7 @@ namespace WebApi
             serviceCollection
                 .AddSingleton<MongoDB<QuestionnaireRun>>()
                 .AddSingleton<MongoDB<QuestionnaireSubmit>>();
+                //.AddSingleton<MongoDB<UserGroup>>();
             return serviceCollection;
         }
 
@@ -35,7 +36,9 @@ namespace WebApi
         {
             serviceCollection
                 .AddTransient<IQuestionnaireRunService, QuestionnaireRunService>()
-                .AddTransient<IQuestionnaireSubmitService, QuestionnaireSubmitService>();
+                .AddTransient<IQuestionnaireSubmitService, QuestionnaireSubmitService>()
+                .AddTransient<IUserService, UserService>()
+                .AddTransient<IUserGroupService, UserGroupService>();
             return serviceCollection;
         }
 
@@ -43,7 +46,9 @@ namespace WebApi
         {
             serviceCollection
                 .AddTransient<IQuestionnaireRunRepository, QuestionnaireRunRepository>()
-                .AddTransient<IQuestionnaireSubmitRepository, QuestionnaireSubmitRepository>();
+                .AddTransient<IQuestionnaireSubmitRepository, QuestionnaireSubmitRepository>()
+                .AddTransient<IUserRepository, UserRepository>()
+                .AddTransient<IUserGroupRepository, UserGroupRepository>();
             return serviceCollection;
         }
     }

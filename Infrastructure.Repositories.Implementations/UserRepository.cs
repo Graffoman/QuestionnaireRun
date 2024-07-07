@@ -1,74 +1,42 @@
 ﻿using Domain.Entities.Classes;
 using Infrastructure.DataAcess;
+using Microsoft.EntityFrameworkCore;
 using Services.Repositories.Abstractions;
+using System.Linq;
 
 namespace Infrastructure.Repositories.Implementations
 {
     public class UserRepository : RepositoryPostgresDB<User, string>, IUserRepository
     {
-        public UserRepository(PostgresDB db) : base(db)
-        {
+        public UserRepository(PostgresDB db) : base(db){}
 
+
+        public override async Task<User> GetAsync(string id, CancellationToken cancellationToken)
+        {
+            var query = Context.Set<User>().AsQueryable();
+            return await query.SingleOrDefaultAsync(c => c.Id == id);
         }
 
-        public Task<User> AddAsync(User entity)
+        //public async Task<List<UserGroup>> GetGroupListAsync(string id)
+        //{
+        //    var groups = Context.Set<UserGroup>().AsQueryable()
+        //                    .Where(c => !c.Deleted);
+        //    var usergroups = Context.Set<UserGroup>().AsQueryable()
+        //                    .Where(c => c.UserId == id);
+
+        //    List<string> groupSearchListIds = usergroups.Select(x => x.GroupId).ToList();
+
+        //    groups = groups.Where(x => groupSearchListIds.Contains(x.Id));
+
+        //    return await groups.ToListAsync();
+        //}
+
+        public async Task<List<User>> GetListAsync()
         {
-            throw new NotImplementedException();
+            var query = GetAll()
+                .Where(c => !c.Deleted);
+            return await query.ToListAsync();
         }
 
-        public void AddRange(List<User> entities)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task AddRangeAsync(ICollection<User> entities)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool Delete(string id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool Delete(User entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool DeleteRange(ICollection<User> entities)
-        {
-            throw new NotImplementedException();
-        }
-
-        public User Get(string id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<User> GetAsync(string id, CancellationToken cancellationToken)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<List<User>> GetUsers(string id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void SaveChanges()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task SaveChangesAsync(CancellationToken cancellationToken = default)
-        {
-            throw new NotImplementedException();
-        }
-
-        void IRepositoryPostgresDB<User, string>.Update(User entity)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

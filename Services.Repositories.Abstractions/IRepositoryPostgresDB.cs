@@ -13,7 +13,8 @@ namespace Services.Repositories.Abstractions
         bool Delete(TPrimaryKey id);
         bool Delete(T entity);
         bool DeleteRange(ICollection<T> entities);
-        void Update(T entity);
+        bool Update(T entity);
+        Task<bool> UpdateAsync(T entity, CancellationToken cancellationToken);
         T Add(T entity);
         Task<T> AddAsync(T entity);
         void AddRange(List<T> entities);

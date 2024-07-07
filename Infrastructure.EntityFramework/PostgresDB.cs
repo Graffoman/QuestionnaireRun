@@ -1,12 +1,21 @@
 ﻿using Domain.Entities.Classes;
 using Microsoft.EntityFrameworkCore;
+using System.Text.RegularExpressions;
 
 
 namespace Infrastructure.DataAcess
 {
     public class PostgresDB : DbContext
     {
+        public PostgresDB(DbContextOptions<PostgresDB> options) : base(options)
+        {
+        }
+
+
         public DbSet<User> User { get; set; }
+
+        public DbSet<UserGroup> UserGroups { get; set; }
+
         public DbSet<Questionnaire> Questionnaire { get; set; }
 
         public PostgresDB()
@@ -25,10 +34,14 @@ namespace Infrastructure.DataAcess
             modelBuilder.Entity<User>()
                 .HasKey(x => x.Id);
 
-            modelBuilder.Entity<User>().Property(u => u.UserId).HasMaxLength(100);
-            modelBuilder.Entity<User>().Property(u => u.Email).HasMaxLength(100);
-            modelBuilder.Entity<User>().Property(u => u.FirstName).HasMaxLength(100);
-            modelBuilder.Entity<User>().Property(u => u.LastName).HasMaxLength(100);
+            modelBuilder.Entity<User>().ToTable("user");
+            modelBuilder.Entity<UserGroup>().ToTable("usergroup");
+
+            modelBuilder.Entity<User>().Property(c => c.FirstName).HasMaxLength(256);
+            modelBuilder.Entity<User>().Property(c => c.LastName).HasMaxLength(256);
+            modelBuilder.Entity<User>().Property(c => c.Department).HasMaxLength(512);
+            modelBuilder.Entity<User>().Property(c => c.Email).HasMaxLength(256);
+            modelBuilder.Entity<Group>().Property(c => c.Name).HasMaxLength(512);
         }
     }
 }
