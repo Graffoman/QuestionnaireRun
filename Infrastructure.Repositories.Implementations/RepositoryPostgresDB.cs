@@ -126,9 +126,33 @@ namespace Infrastructure.Repositories.Implementations
         /// Для сущности проставить состояние - что она изменена.
         /// </summary>
         /// <param name="entity"> Сущность для изменения. </param>
-        public virtual void Update(T entity)
+        public virtual bool Update(T entity)
         {
+            if (entity == null)
+            {
+                return false;
+            }
+
             Context.Entry(entity).State = EntityState.Modified;
+
+            return true;
+        }
+
+
+        public Task<bool> UpdateAsync(T entity, CancellationToken cancellationToken)
+        {
+            try
+            {
+                {
+                    Context.Entry(entity).State = EntityState.Modified;
+
+                    return Task.FromResult(true);
+                }
+            }
+            catch (Exception ex)
+            {
+                return Task.FromResult(false);
+            }
         }
 
         #endregion

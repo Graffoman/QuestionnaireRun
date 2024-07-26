@@ -45,12 +45,10 @@ namespace WebApi.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateAsync(string id, UpdateUserDto updateUserDto)
         {
-            //var user = _mapper.Map<UpdateUserDto, User>(updateUserDto);
-            //user.Id = id;
+            var user = _mapper.Map<UpdateUserDto, User>(updateUserDto);
+            user.Id = id;
 
-            //await _service.UpdateAsync(user);
-
-            await _service.UpdateAsync(id, _mapper.Map<UpdateUserDto, User>(updateUserDto));
+            await _service.UpdateAsync(id, updateUserDto);
 
             return Ok();
         }

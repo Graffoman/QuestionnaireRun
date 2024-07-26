@@ -25,5 +25,9 @@ namespace Infrastructure.Repositories.Implementations
             return await query.ToListAsync();
         }
 
+        public Task<List<User>> GetUserListAsync(string id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

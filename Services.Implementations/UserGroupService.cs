@@ -1,11 +1,9 @@
 ﻿using AutoMapper;
 using Domain.Entities.Classes;
 using Services.Abstractions;
-using Services.Contracts.Group;
 using Services.Contracts.UserDto;
 using Services.Contracts.UserGroupDto;
 using Services.Repositories.Abstractions;
-using System.Text.RegularExpressions;
 
 namespace Services.Implementations
 {
@@ -22,7 +20,7 @@ namespace Services.Implementations
 
 
 
-        public Task<UserGroupDto> GetByIdAsync(string id)
+        public Task<UserGroup> GetByIdAsync(string id)
         {
             return _userGroupRepository.GetAsync(id, CancellationToken.None);
         }

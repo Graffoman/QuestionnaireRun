@@ -44,19 +44,19 @@ namespace WebApi.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateAsync(string id, CreateUserGroupDto createUserGroupDto)
+        public async Task<IActionResult> UpdateAsync(string id, UpdateUserGroupDto updateUserGroupDto)
         {
-            var userGroupDto = _mapper.Map<CreateUserGroupDto, UserGroup>(createUserGroupDto);
+            var userGroupDto = _mapper.Map<UpdateUserGroupDto, UserGroup>(updateUserGroupDto);
             userGroupDto.Id = id;
 
-            await _service.UpdateAsync(userGroupDto);
+            await _service.UpdateAsync(id, updateUserGroupDto);
             return Ok();
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteByIdAsync(string id)
+        public async Task<IActionResult> DeleteAsync(string id)
         {
-            await _service.DeleteByIdAsync(id);
+            await _service.DeleteAsync(id);
             return Ok();
         }
 
