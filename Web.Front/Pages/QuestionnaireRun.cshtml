@@ -1,0 +1,28 @@
+﻿@page
+@model QuestionnaireRunModel
+@{
+    ViewData["Title"] = "QuestionnaireRun";
+}
+
+<header><h3>Заполните поля для запуска опроса</h3></header>
+
+<div class="mb-3">
+    <label for="idSelect" class="form-label">ID опроса</label>
+        <input type="text" class="form-control" id="id" aria-describedby="idform">
+</div>
+
+<label for="userGroupSelect" class="form-label">Выбор группы пользователей для отправки</label>
+<select class="form-select" aria-label="Выбор группы пользователей для отправки">
+    <option selected>Всем</option>
+    <option value="1">HR</option>
+    <option value="2">MM</option>
+    <option value="3">SD</option>
+</select>
+
+<br />
+
+<div class="button">
+    <button type="button" class="btn btn-primary">Primary</button>
+</div>
+
+
