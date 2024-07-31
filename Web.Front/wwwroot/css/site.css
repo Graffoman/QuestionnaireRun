@@ -1,22 +1,61 @@
 html {
-  font-size: 14px;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    font-size: 16px;
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+        font-family: 'Comic Sans MS', cursive, sans-serif;
+    }
 }
 
 .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
 }
 
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+
+.navbar {
+    background-color: blue; /* Синий фон */
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+
+.navbar-brand {
+    color: yellow; /* Желтый текст */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Объемный текст */
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+
+.nav-item {
+    color: yellow; /* Желтый текст */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Объемный текст */
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+
+.nav-link {
+    color: yellow; /* Желтый текст */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Объемный текст */
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+
+.navbar-brand:hover,
+.nav-link:hover {
+    text-decoration: none; /* Убираем подчеркивание при наведении */
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+
+.logo {
+    display: block;
+    width: 150px; /* Размер логотипа */
 }
