@@ -36,7 +36,7 @@ namespace Infrastructure.DataAcces
             });
 
             BsonClassMap.RegisterClassMap<User>();
-            //BsonClassMap.RegisterClassMap<Questionnaire>();
+            BsonClassMap.RegisterClassMap<Questionnaire>();
         }
     }
 }

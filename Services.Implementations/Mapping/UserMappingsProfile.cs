@@ -13,7 +13,7 @@ namespace Services.Implementations.Mapping
 
             CreateMap<CreateUserDto, User>()
                 .ForMember(x => x.Id, map => map.Ignore())
-                .ForMember(x => x.UserId, map => map.MapFrom(src => src.UserId))
+                //.ForMember(x => x.UserId, map => map.MapFrom(src => src.UserId))
                 .ForMember(x => x.Email, map => map.MapFrom(src => src.Email))
                 .ForMember(x => x.FirstName, map => map.MapFrom(src => src.FirstName))
                 .ForMember(x => x.LastName, map => map.MapFrom(src => src.LastName))
@@ -23,7 +23,7 @@ namespace Services.Implementations.Mapping
 
             CreateMap<UpdateUserDto, User>()
                 .ForMember(x => x.Id, map => map.Ignore())
-                .ForMember(x => x.UserId, map => map.Ignore())
+                //.ForMember(x => x.UserId, map => map.Ignore())
                 .ForMember(x => x.Email, map => map.MapFrom(src => src.Email))
                 .ForMember(x => x.FirstName, map => map.MapFrom(src => src.FirstName))
                 .ForMember(x => x.LastName, map => map.MapFrom(src => src.LastName))

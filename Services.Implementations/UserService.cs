@@ -13,16 +13,16 @@ namespace Services.Implementations
     {
         private readonly IMapper _mapper;
         private readonly IUserRepository _userRepository;
-        private readonly IBusControl _busControl;
+        //private readonly IBusControl _busControl;
 
         public UserService(
             IMapper mapper,
-            IUserRepository userRepository,
-            IBusControl busControl)
+            IUserRepository userRepository)
+            //IBusControl busControl)
         {
             _mapper = mapper;
             _userRepository = userRepository;
-            _busControl = busControl;
+            //_busControl = busControl;
         }
 
         public async Task<UserDto> GetByIdAsync(string id)

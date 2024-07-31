@@ -6,6 +6,7 @@ using Infrastructure.Repositories.Implementations;
 using Services.Implementations;
 using Domain.Entities.Classes;
 using Infrastructure.DataAcces;
+using Microsoft.EntityFrameworkCore;
 
 namespace WebApi
 {
@@ -16,8 +17,10 @@ namespace WebApi
             var applicationSettings = configuration.Get<ApplicationSettings>();
             services.AddSingleton(applicationSettings)
                     .AddSingleton((IConfigurationRoot)configuration)
-                    .InstallMongoDB()
                     .InstallServices()
+                    .AddDbContext<PostgresDB>(options => options.UseNpgsql(applicationSettings.ConnectionString))
+                    //.ConfigureContext(applicationSettings.ConnectionString)
+                    .InstallMongoDB()
                     .InstallRepositories();
             return services;
         }
@@ -28,7 +31,6 @@ namespace WebApi
             serviceCollection
                 .AddSingleton<MongoDB<QuestionnaireRun>>()
                 .AddSingleton<MongoDB<QuestionnaireSubmit>>();
-                //.AddSingleton<MongoDB<UserGroup>>();
             return serviceCollection;
         }
 

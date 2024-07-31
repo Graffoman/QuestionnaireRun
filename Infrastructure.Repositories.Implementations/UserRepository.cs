@@ -8,7 +8,10 @@ namespace Infrastructure.Repositories.Implementations
 {
     public class UserRepository : RepositoryPostgresDB<User, string>, IUserRepository
     {
-        public UserRepository(PostgresDB db) : base(db){}
+        public UserRepository(PostgresDB db) : base(db)
+        {
+
+        }
 
 
         public override async Task<User> GetAsync(string id, CancellationToken cancellationToken)

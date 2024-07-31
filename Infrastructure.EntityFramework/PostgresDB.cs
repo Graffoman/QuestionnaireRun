@@ -24,15 +24,15 @@ namespace Infrastructure.DataAcess
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseNpgsql("Host=localhost;Port=5433;Database=postgres;Username=postgres;Password=admin");
+            optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=postgres;Username=postgres;Password=admin");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<User>()
-                .HasKey(x => x.Id);
+            //modelBuilder.Entity<User>()
+            //    .HasKey(x => x.Id);
 
             modelBuilder.Entity<User>().ToTable("user");
             modelBuilder.Entity<UserGroup>().ToTable("usergroup");
