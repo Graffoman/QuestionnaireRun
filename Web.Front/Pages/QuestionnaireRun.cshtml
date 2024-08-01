@@ -26,11 +26,6 @@
             margin-bottom: 20px;
         }
 
-        /* .logo {
-            display: block;
-            width: 150px; /* Размер логотипа */
-        } */
-
         .form-label {
             font-weight: bold;
             color: #004080; /* Темно-синий цвет */
@@ -39,6 +34,7 @@
         .form-select, .form-control {
             margin-bottom: 15px;
             border-color: #004080; /* Темно-синий цвет */
+            border: 3px solid #003366;
         }
 
         .button {
@@ -51,10 +47,19 @@
             border-color: #004080; /* Темно-синий цвет */
         }
 
-            .btn-primary:hover {
-                background-color: #003366; /* Темнее синий цвет */
-                border-color: #003366; /* Темнее синий цвет */
-            }
+        .btn-primary:hover {
+            background-color: #003366; /* Темнее синий цвет */
+            border-color: #003366; /* Темнее синий цвет */
+        }
+
+        .date-input {
+            padding: 10px;
+            font-size: 16px;
+            border: 3px solid #003366;
+            border-radius: 5px;
+            background-color: #fff;
+            color: #003366;
+        }
     </style>
 </head>
 <body>
@@ -63,18 +68,32 @@
         <h3>Заполните поля для запуска опроса</h3>
     </header>
 
-    <div class="mb-3">
-        <label for="idSelect" class="form-label">ID опроса</label>
-        <input type="text" class="form-control" id="id" aria-describedby="idform">
-    </div>
+    <label for="questionnaireSelect" class="form-label">Выбор опроса для отправки</label>
+    <select class="form-select" aria-label="Выбор опроса для отправки">
+        <option selected></option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+    </select>
 
     <label for="userGroupSelect" class="form-label">Выбор группы пользователей для отправки</label>
     <select class="form-select" aria-label="Выбор группы пользователей для отправки">
-        <option selected>Всем</option>
+        <option selected></option>
         <option value="1">HR</option>
         <option value="2">MM</option>
         <option value="3">SD</option>
+        <option value="4">Всем</option>
     </select>
+
+    <label for="userSelect" class="form-label">Выбор пользователей для отправки</label>
+    <div class="input-group flex-nowrap">
+        <input type="text" class="form-control" id="userSelect" required>
+    </div>
+
+    <label for="dateSelect" class="form-label">Выбор даты окончания опроса</label>
+    <div class="input-group flex-nowrap">
+        <input type="date" class="date-input">
+    </div>
 
     <div class="button">
         <button type="button" class="btn btn-primary">Запустить</button>

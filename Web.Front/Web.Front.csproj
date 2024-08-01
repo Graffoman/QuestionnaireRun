@@ -10,4 +10,8 @@
     <PackageReference Include="Npm" Version="3.5.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Domain.Entities\Domain.Entities.csproj" />
+  </ItemGroup>
+
 </Project>
