@@ -29,7 +29,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Services.Repositories.Abstr
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{1CB65325-383C-4B84-B1E2-85C8CC9F886A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web.Front", "Web.Front\Web.Front.csproj", "{6408603F-BF57-40C5-912C-94E10B3A4295}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Web.Front", "Web.Front\Web.Front.csproj", "{6408603F-BF57-40C5-912C-94E10B3A4295}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
