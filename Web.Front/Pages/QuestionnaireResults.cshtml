@@ -1,4 +1,5 @@
-﻿@page
+﻿
+@* @page
 @model QuestionnaireResultsModel
 @{
     ViewData["Title"] = "QuestionnaireResults";
@@ -203,7 +204,8 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-</html>
+</html> *@
+
 
 
 @* @model QuestionnaireResultsModel
@@ -470,3 +472,221 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html> *@
+
+
+
+@page
+@model QuestionnaireResultsModel
+@{
+    ViewData["Title"] = "QuestionnaireResults";
+}
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Проверка результатов опросов - ООО ТК Мегаполис</title>
+    <style>
+        body {
+            /* font-family: 'Comic Sans MS', sans-serif; */
+            background-image: url('https://avatars.mds.yandex.net/i?id=d1188cdbda349320bfc20a2ea7dade30_l-4900601-images-thumbs&n=13'); /* Путь к аниме-картинке */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            padding: 20px;
+            color: #004080; /* Темно-синий цвет */
+        }
+
+        header {
+            text-align: end;
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            font-weight: bold;
+            color: #004080; /* Темно-синий цвет */
+        }
+
+        .form-select, .form-control {
+            margin-bottom: 15px;
+            border-color: #004080; /* Темно-синий цвет */
+            border: 3px solid #003366;
+        }
+
+        .button {
+            text-align: end;
+            margin-top: 20px;
+        }
+
+        .btn-primary {
+            background-color: #004080; /* Темно-синий цвет */
+            border-color: #004080; /* Темно-синий цвет */
+        }
+
+            .btn-primary:hover {
+                background-color: #003366; /* Темнее синий цвет */
+                border-color: #003366; /* Темнее синий цвет */
+            }
+
+        .date-input {
+            padding: 10px;
+            font-size: 16px;
+            border: 3px solid #003366;
+            border-radius: 5px;
+            background-color: #fff;
+            color: #003366;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table, th, td {
+            border: 3px solid #003366;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #004080;
+            color: white;
+        }
+
+        td {
+            background-color: white;
+            color: #004080;
+        }
+
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+            .pagination button {
+                background-color: #004080;
+                border: none;
+                color: white;
+                padding: 10px 20px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px;
+                margin: 0 5px;
+                cursor: pointer;
+            }
+
+                .pagination button:hover {
+                    background-color: #003366;
+                }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="https://gormedosmotr.ru/upload/iblock/25c/aut5ggwj9wak65pr3u58a0kadvtgcj86.png" alt="Логотип ООО ТК Мегаполис" class="logo">
+        <h3>Выберите опрос для проверки результатов</h3>
+    </header>
+
+    <label for="questionnaireSelect" class="form-label">Выбор опроса для просмотра результатов</label>
+    <select id="questionnaireSelect" class="form-select" aria-label="Выбор опроса для просмотра результатов">
+        <option selected></option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+    </select>
+
+    <div class="button">
+        <button type="button" class="btn btn-primary" onclick="showResults()">Проверить</button>
+    </div>
+
+    <div id="resultsTable"></div>
+    <div class="pagination" id="pagination"></div>
+
+    <script>
+        let currentPage = 1;
+        const rowsPerPage = 6;
+        let data = [];
+
+        function showResults() {
+            const selectedQuestionnaire = document.getElementById('questionnaireSelect').value;
+            if (selectedQuestionnaire) {
+                data = [
+                    { question: 'Вопрос 1', answer: 'Ответ 1' },
+                    { question: 'Вопрос 2', answer: 'Ответ 2' },
+                    { question: 'Вопрос 3', answer: 'Ответ 3' },
+                    { question: 'Вопрос 4', answer: 'Ответ 4' },
+                    { question: 'Вопрос 5', answer: 'Ответ 5' },
+                    { question: 'Вопрос 6', answer: 'Ответ 6' },
+                    { question: 'Вопрос 7', answer: 'Ответ 7' },
+                    { question: 'Вопрос 8', answer: 'Ответ 8' },
+                    { question: 'Вопрос 9', answer: 'Ответ 9' },
+                    { question: 'Вопрос 10', answer: 'Ответ 10' },
+                    { question: 'Вопрос 11', answer: 'Ответ 11' },
+                    { question: 'Вопрос 12', answer: 'Ответ 12' },
+                    { question: 'Вопрос 13', answer: 'Ответ 13' },
+                    { question: 'Вопрос 14', answer: 'Ответ 14' },
+                    { question: 'Вопрос 15', answer: 'Ответ 15' },
+                ];
+                renderTable();
+                renderPagination();
+            } else {
+                alert('Пожалуйста, выберите опрос.');
+            }
+        }
+
+        function renderTable() {
+            const resultsTable = document.getElementById('resultsTable');
+            const start = (currentPage - 1) * rowsPerPage;
+            const end = start + rowsPerPage;
+            const paginatedData = data.slice(start, end);
+
+            resultsTable.innerHTML = `
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Вопрос</th>
+                                    <th>Ответ</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                ${paginatedData.map(row => `
+                                    <tr>
+                                        <td>${row.question}</td>
+                                        <td>${row.answer}</td>
+                                    </tr>
+                                `).join('')}
+                            </tbody>
+                        </table>
+                    `;
+        }
+
+        function renderPagination() {
+            const pagination = document.getElementById('pagination');
+            const pageCount = Math.ceil(data.length / rowsPerPage);
+            pagination.innerHTML = `
+                        <button onclick="changePage(-1)">Назад</button>
+                        <span>${currentPage} из ${pageCount}</span>
+                        <button onclick="changePage(1)">Вперед</button>
+                    `;
+        }
+
+        function changePage(direction) {
+            currentPage += direction;
+            const pageCount = Math.ceil(data.length / rowsPerPage);
+            if (currentPage < 1) currentPage = 1;
+            if (currentPage > pageCount) currentPage = pageCount;
+            renderTable();
+            renderPagination();
+        }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
