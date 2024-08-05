@@ -17,10 +17,10 @@ namespace Services.Implementations.Mapping
                 .ForMember(x => x.StartDate, map => map.MapFrom(src => DateTime.Now))
                 .ForMember(x => x.EndDate, map => map.MapFrom(src => DateTime.Now))
                 .ForMember(x => x.SendDate, map => map.MapFrom(src => src.SendDate))
-                .ForMember(x => x.Users, map => map.MapFrom(src => src.Users))
-                .ForMember(x => x.UserGroups, map => map.MapFrom(src => src.UserGroups))
-                .ForMember(x => x.Author, map => map.MapFrom(src => src.Author));
-               
+                .ForMember(x => x.UserIds, map => map.MapFrom(src => src.Users))
+                .ForMember(x => x.UserGroupIds, map => map.MapFrom(src => src.UserGroups))
+                .ForMember(x => x.AuthorId, map => map.MapFrom(src => src.Author));
+
             CreateMap<UpdateQuestionnaireRunDto, QuestionnaireRun>()
 
                 .ForMember(x => x.Id, map => map.Ignore())
@@ -29,9 +29,9 @@ namespace Services.Implementations.Mapping
                 .ForMember(x => x.StartDate, map => map.MapFrom(src => src.StartDate))
                 .ForMember(x => x.EndDate, map => map.MapFrom(src => src.EndDate))
                 .ForMember(x => x.SendDate, map => map.MapFrom(src => src.SendDate))
-                .ForMember(x => x.Users, map => map.MapFrom(src => src.Users))
-                .ForMember(x => x.UserGroups, map => map.MapFrom(src => src.UserGroups))
-                .ForMember(x => x.Author, map => map.MapFrom(src => src.Author));
+                .ForMember(x => x.UserIds, map => map.MapFrom(src => src.Users))
+                .ForMember(x => x.UserGroupIds, map => map.MapFrom(src => src.UserGroups))
+                .ForMember(x => x.AuthorId, map => map.MapFrom(src => src.Author));
 
             //.ForMember(x => x.Id, map => map.Ignore())
             //.ForMember(x => x.QuestionnaireId, map => map.Ignore())

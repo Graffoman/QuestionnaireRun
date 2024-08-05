@@ -69,7 +69,7 @@
     </header>
 
     <label for="questionnaireSelect" class="form-label">Выбор опроса для отправки</label>
-    <select class="form-select" aria-label="Выбор опроса для отправки" id="questionnaireSelect">
+    <select class="form-select" aria-label="Выбор опроса для отправки" id="questionnaireSelect" required>
         <option selected></option>
         <option value="1">1</option>
         <option value="2">2</option>
@@ -77,7 +77,7 @@
     </select>
 
     <label for="userGroupSelect" class="form-label">Выбор группы пользователей для отправки</label>
-    <select class="form-select" aria-label="Выбор группы пользователей для отправки" id="userGroupSelect">
+    <select class="form-select" aria-label="Выбор группы пользователей для отправки" id="userGroupSelect" required>
         <option selected></option>
         <option value="1">HR</option>
         <option value="2">MM</option>
@@ -110,15 +110,23 @@
         {
             const questionnaireId = document.getElementById('questionnaireSelect').value
             const userGroupId = document.getElementById('userGroupSelect').value;
-            const userIds = document.getElementById('userSelect').value;
+            const userId = document.getElementById('userSelect').value;
             const endDate = document.getElementById('dateSelect').value;
 
             const data = 
             {
-                questionnaireId: questionnaireId,
-                userGroupId: userGroupId,
-                userIds: userIds,
-                endDate: endDate,
+                "questionnaireId": questionnaireId,
+                "state": "New",
+                "startDate": new Date(Date.now()).toISOString(),
+                "endDate": endDate,
+                "sendDate": "2024-08-05T18:20:59.398Z",
+                "users": [
+                    userId
+                ],
+                "userGroups": [
+                    userGroupId
+                ],
+                "author": "Admin"
             };
 
             try 

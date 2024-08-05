@@ -11,8 +11,8 @@ namespace Domain.Entities.Classes
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
         public DateTime? SendDate { get; set; }
-        public List<User>? Users { get; set; }
-        public List<UserGroup>? UserGroups { get; set; }
-        public User Author { get; set; }
+        public List<string>? UserIds { get; set; }
+        public List<string>? UserGroupIds { get; set; }
+        public string AuthorId { get; set; }
     }
 }
