@@ -27,7 +27,7 @@ namespace Services.Abstractions
         /// Получить полный список.
         /// </summary>
         /// <returns> Список пользователей. </returns>
-        //Task<ICollection<UserDto>> GetListAsync();
+        Task<ICollection<UserDto>> GetListAsync();
 
         ///// <summary>
         ///// Получить список групп пользователя.

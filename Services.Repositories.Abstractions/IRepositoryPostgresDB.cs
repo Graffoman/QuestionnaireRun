@@ -1,5 +1,4 @@
-﻿
-using Domain.Entities.Interfaces;
+﻿using Domain.Entities.Interfaces;
 
 namespace Services.Repositories.Abstractions
 {
@@ -22,5 +21,4 @@ namespace Services.Repositories.Abstractions
         void SaveChanges();
         Task SaveChangesAsync(CancellationToken cancellationToken = default);
     }
-
 }

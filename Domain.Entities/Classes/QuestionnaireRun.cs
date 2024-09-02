@@ -10,9 +10,9 @@ namespace Domain.Entities.Classes
         public QuestionnaireRunState State { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
-        public DateTime? SendDate { get; set; }
-        public List<string>? UserIds { get; set; }
-        public List<string>? UserGroupIds { get; set; }
-        public string AuthorId { get; set; }
+        public List<DateTime> SendDate { get; set; }
+        public List<User> User { get; set; }
+        public List<UserGroup> UserGroup { get; set; }
+        public User Author { get; set; }
     }
 }

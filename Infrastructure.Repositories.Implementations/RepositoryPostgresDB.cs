@@ -69,7 +69,6 @@ namespace Infrastructure.Repositories.Implementations
             return await GetAll().ToListAsync(cancellationToken);
         }
 
-
         #endregion
 
         #region Create
@@ -137,7 +136,6 @@ namespace Infrastructure.Repositories.Implementations
 
             return true;
         }
-
 
         public Task<bool> UpdateAsync(T entity, CancellationToken cancellationToken)
         {

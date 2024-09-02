@@ -1,5 +1,4 @@
-﻿
-namespace Domain.Entities.Interfaces
+﻿namespace Domain.Entities.Interfaces
 {
     public interface IEntityPostgresDB<TId>
     {

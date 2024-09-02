@@ -1,7 +1,5 @@
 ﻿using Domain.Entities.Classes;
 using Microsoft.EntityFrameworkCore;
-using System.Text.RegularExpressions;
-
 
 namespace Infrastructure.DataAcess
 {
@@ -10,7 +8,6 @@ namespace Infrastructure.DataAcess
         public PostgresDB(DbContextOptions<PostgresDB> options) : base(options)
         {
         }
-
 
         public DbSet<User> User { get; set; }
 
@@ -22,9 +19,10 @@ namespace Infrastructure.DataAcess
         {
             Database.EnsureCreated();
         }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=postgres;Username=postgres;Password=admin");
+            optionsBuilder.UseNpgsql("Host=84.201.158.212;Port=5432;Database=questionnaire;Username=admin;Password=admin");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -41,7 +39,13 @@ namespace Infrastructure.DataAcess
             modelBuilder.Entity<User>().Property(c => c.LastName).HasMaxLength(256);
             modelBuilder.Entity<User>().Property(c => c.Department).HasMaxLength(512);
             modelBuilder.Entity<User>().Property(c => c.Email).HasMaxLength(256);
-            modelBuilder.Entity<Group>().Property(c => c.Name).HasMaxLength(512);
+            modelBuilder.Entity<UserGroup>().Property(c => c.Name).HasMaxLength(512);
+
+            modelBuilder.Entity<User>().Property(u => u.Id).ValueGeneratedOnAdd();
+
+            // Добавлено: Убедитесь, что у сущности Capture есть конструктор без параметров или что все параметры конструктора могут быть связаны с свойствами сущности.
+            modelBuilder.Entity<Capture>().HasKey(c => c.Id);
+            modelBuilder.Entity<Capture>().Property(c => c.Text).HasMaxLength(256);
         }
     }
 }

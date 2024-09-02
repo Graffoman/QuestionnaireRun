@@ -3,6 +3,7 @@ using Domain.Entities.Classes;
 using Microsoft.AspNetCore.Mvc;
 using Services.Abstractions;
 using Services.Contracts.UserDto;
+using System.Threading.Tasks;
 
 namespace WebApi.Controllers
 {
@@ -11,7 +12,7 @@ namespace WebApi.Controllers
     public class UserController : ControllerBase
     {
         private readonly IUserService _service;
-        private readonly ILogger _logger;
+        private readonly ILogger<UserController> _logger;
         private readonly IMapper _mapper;
 
         public UserController(IUserService service, ILogger<UserController> logger, IMapper mapper)
@@ -24,40 +25,80 @@ namespace WebApi.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetByIdAsync(string id)
         {
-            var user = await _service.GetByIdAsync(id);
-            return Ok(user);
+            try
+            {
+                var user = await _service.GetByIdAsync(id);
+                if (user == null)
+                {
+                    return NotFound();
+                }
+                return Ok(user);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error occurred while getting user by ID");
+                return StatusCode(500, "Internal server error");
+            }
         }
 
-        //[HttpGet]
-        //public async Task<IActionResult> GetAllAsync()
-        //{
-        //    var user = await _service.GetAllAsync();
-        //    return Ok(user);
-        //}
+        [HttpGet]
+        public async Task<IActionResult> GetAllAsync()
+        {
+            try
+            {
+                var users = await _service.GetListAsync();
+                return Ok(users);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error occurred while getting all users");
+                return StatusCode(500, "Internal server error");
+            }
+        }
 
         [HttpPost]
-        public async Task<IActionResult> CreateAsync(CreateUserDto createUserDto)
+        public async Task<IActionResult> CreateAsync([FromBody] CreateUserDto createUserDto)
         {
-            var id = await _service.CreateAsync(createUserDto);
-            return Ok(id);
+            try
+            {
+                var id = await _service.CreateAsync(createUserDto);
+                return CreatedAtAction(nameof(GetByIdAsync), new { id }, id);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error occurred while creating user");
+                return StatusCode(500, "Internal server error");
+            }
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateAsync(string id, UpdateUserDto updateUserDto)
+        public async Task<IActionResult> UpdateAsync(string id, [FromBody] UpdateUserDto updateUserDto)
         {
-            var user = _mapper.Map<UpdateUserDto, User>(updateUserDto);
-            user.Id = id;
-
-            await _service.UpdateAsync(id, updateUserDto);
-
-            return Ok();
+            try
+            {
+                await _service.UpdateAsync(id, updateUserDto);
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error occurred while updating user");
+                return StatusCode(500, "Internal server error");
+            }
         }
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteAsync(string id)
         {
-            await _service.DeleteAsync(id);
-            return Ok();
+            try
+            {
+                await _service.DeleteAsync(id);
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error occurred while deleting user");
+                return StatusCode(500, "Internal server error");
+            }
         }
     }
 }
